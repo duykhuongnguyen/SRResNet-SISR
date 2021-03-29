@@ -21,3 +21,7 @@ Dataset used to train in this project is DIV2K: https://data.vision.ee.ethz.ch/c
 ## 5. Training results
 
 Training results for valid set are in training_results folder by default
+
+
+## Google Colab Example
+[Google Colab Training Code](https://colab.research.google.com/drive/1MFkLwuWdD6QZhhgnrCuQTaBz1rRc0IKN?usp=sharing)
