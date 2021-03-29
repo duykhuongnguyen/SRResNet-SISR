@@ -92,7 +92,6 @@ if __name__ == '__main__':
                     val_results['psnr'], val_results['ssim'], val_results['mse']))
 
                 val_images.extend([display_transform()(hr.data.cpu().squeeze(0)), display_transform()(sr.data.cpu().squeeze(0))])
-                # val_images.extend([display_transform()(val_hr_restore.squeeze(0)), display_transform()(hr.data.cpu().squeeze(0)), display_transform()(sr.data.cpu().squeeze(0))])
             if val_results['mse'] < best_val_loss:
                 val_images = torch.stack(val_images)
                 val_images = torch.chunk(val_images, val_images.shape[0] // 10)
