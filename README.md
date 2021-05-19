@@ -3,7 +3,7 @@
 ## 1. Clone from Github
 ``` 
 git clone https://github.com/Cris-Nguyen/SRResNet-SISR 
-cd SEResNet-SISR
+cd SRResNet-SISR
 ```
 
 ## 2. Install requirements
