@@ -22,6 +22,13 @@ Dataset used to train in this project is DIV2K: https://data.vision.ee.ethz.ch/c
 
 Training results for valid set are in training_results folder by default
 
+## 6. Inference
+
+Example:
+
+```
+python inference.py --file_path <your_file_path>
+```
 
 ## Google Colab Example
 [Google Colab Training Code](https://colab.research.google.com/drive/1MFkLwuWdD6QZhhgnrCuQTaBz1rRc0IKN?usp=sharing)
