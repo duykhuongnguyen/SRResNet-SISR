@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader
 import pytorch_ssim
 
 from model import SRResNet
-from data_utils import TrainImageDataset, ValImageDataset, display_transform
+from data_utils import TrainImageDataset, ValImageDataset, display_transform_hr
 import config as cf
 
 
@@ -91,7 +91,7 @@ if __name__ == '__main__':
                 desc='[Val converting LR images to SR images] PSNR: %.4f dB SSIM: %.4f MSE: %.4f' % (
                     val_results['psnr'], val_results['ssim'], val_results['mse']))
 
-                val_images.extend([display_transform()(hr.data.cpu().squeeze(0)), display_transform()(sr.data.cpu().squeeze(0))])
+                val_images.extend([display_transform_hr()(hr.data.cpu().squeeze(0)), display_transform_hr()(sr.data.cpu().squeeze(0))])
             if val_results['mse'] < best_val_loss:
                 val_images = torch.stack(val_images)
                 val_images = torch.chunk(val_images, val_images.shape[0] // 10)
@@ -110,9 +110,6 @@ if __name__ == '__main__':
         results['psnr'].append(val_results['psnr'])
         results['ssim'].append(val_results['ssim'])
 
-    print('Finished training')
-
-    df = pd.DataFrame(
-        data={'mse_loss': results['mse_loss'], 'psnr': results['psnr'], 'ssim': results['ssim']},
-        index=range(1, cf.EPOCHS + 1))
-    df.to_csv('result.csv', index_label='Epoch')
+        if epoch % 10 == 0 and epoch != 0:
+            df = pd.DataFrame(data={'mse_loss': results['mse_loss'], 'psnr': results['psnr'], 'ssim': results['ssim']}, index=range(1, cf.EPOCHS + 1))
+            df.to_csv('statistics/result.csv', index_label='Epoch')
