@@ -113,11 +113,21 @@ def lr_transform(crop_size, upscale_factor):
     ])
 
 
-def display_transform():
+def display_transform_hr():
     """ Transform for display  """
     return Compose([
         ToPILImage(),
         Resize(400),
         CenterCrop(400),
+        ToTensor()
+    ])
+
+
+def display_transform_lr():
+    """ Transform for display  """
+    return Compose([
+        ToPILImage(),
+        Resize(100),
+        CenterCrop(100),
         ToTensor()
     ])
