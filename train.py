@@ -111,5 +111,5 @@ if __name__ == '__main__':
         results['ssim'].append(val_results['ssim'])
 
         if epoch % 10 == 0 and epoch != 0:
-            df = pd.DataFrame(data={'mse_loss': results['mse_loss'], 'psnr': results['psnr'], 'ssim': results['ssim']}, index=range(1, cf.EPOCHS + 1))
+            df = pd.DataFrame(data={'mse_loss': results['mse_loss'], 'psnr': results['psnr'], 'ssim': results['ssim']}, index=range(1, epoch + 1))
             df.to_csv('statistics/result.csv', index_label='Epoch')
