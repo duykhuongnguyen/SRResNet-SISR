@@ -17,7 +17,7 @@ class SRResNet(nn.Module):
 
         super(SRResNet, self).__init__()
         self.conv1 = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=9, padding=4),
+            nn.Conv2d(3, 64, kernel_size=3, padding=1),
             nn.PReLU()
         )
         residual = [ResidualBlock(64) for _ in range(num_residual)]
